@@ -1,46 +1,20 @@
+# Embedded IoT Homework 2 - PWM & OLED Monitoring
+**Name:** Khudaira Babar  
+**Reg No:** 24-NTU-CS-FL-1041  
 
-This directory is intended for project specific (private) libraries.
-PlatformIO will compile them to static libraries and link into the executable file.
+## Overview
+This project implements hardware PWM using the ESP32 to fade two LEDs at different frequencies. Live monitoring of the configured frequencies and dynamic duty cycles is output to an SSD1306 OLED display via I2C.
 
-The source code of each library should be placed in a separate directory
-("lib/your_library_name/[Code]").
+## Hardware Wiring
+* **LED 1 (Red):** Connected to GPIO 16 via a 330-ohm current-limiting resistor. 
+* **LED 2 (Green):** Connected to GPIO 17 via a 330-ohm current-limiting resistor.
+* **SSD1306 OLED:** Connected to I2C pins SDA (GPIO 21) and SCL (GPIO 22). Powered via 3.3V.
 
-For example, see the structure of the following example libraries `Foo` and `Bar`:
+## PWM Configuration & Duty Cycle Control
+* **LED 1 Frequency:** 5000 Hz 
+* **LED 2 Frequency:** 1000 Hz 
+* **Resolution:** 8-bit (values 0 - 255)
+* **Duty Cycle:** A `for` loop dynamically increments and decrements the duty cycle from 0 to 255 and back to 0. 
 
-|--lib
-|  |
-|  |--Bar
-|  |  |--docs
-|  |  |--examples
-|  |  |--src
-|  |     |- Bar.c
-|  |     |- Bar.h
-|  |  |- library.json (optional. for custom build options, etc) https://docs.platformio.org/page/librarymanager/config.html
-|  |
-|  |--Foo
-|  |  |- Foo.c
-|  |  |- Foo.h
-|  |
-|  |- README --> THIS FILE
-|
-|- platformio.ini
-|--src
-   |- main.c
-
-Example contents of `src/main.c` using Foo and Bar:
-```
-#include <Foo.h>
-#include <Bar.h>
-
-int main (void)
-{
-  ...
-}
-
-```
-
-The PlatformIO Library Dependency Finder will find automatically dependent
-libraries by scanning project source files.
-
-More information about PlatformIO Library Dependency Finder
-- https://docs.platformio.org/page/librarymanager/ldf.html
+## OLED Output & Test Results
+The OLED correctly displays the static configured frequencies for both LEDs alongside the live percentage of the current duty cycle, updating dynamically as the LEDs fade in and out. The circuit was successfully verified in Wokwi simulation and on physical ESP32 hardware.

@@ -7,7 +7,8 @@
     { "type": "wokwi-led", "id": "led1", "top": -67.2, "left": 134.4, "attrs": { "color": "red" } },
     { "type": "wokwi-resistor", "id": "res1", "top": -28.8, "left": 134.4, "attrs": { "value": "330" } },
     { "type": "wokwi-led", "id": "led2", "top": 48, "left": 134.4, "attrs": { "color": "green" } },
-    { "type": "wokwi-resistor", "id": "res2", "top": 86.4, "left": 134.4, "attrs": { "value": "330" } }
+    { "type": "wokwi-resistor", "id": "res2", "top": 86.4, "left": 134.4, "attrs": { "value": "330" } },
+    { "type": "board-ssd1306", "id": "oled1", "top": 127.94, "left": -57.37, "attrs": {} }
   ],
   "connections": [
     [ "esp:16", "res1:1", "green", [ "v0" ] ],
@@ -15,7 +16,11 @@
     [ "esp:GND.1", "led1:C", "black", [ "v-19.2", "h-143.6" ] ],
     [ "esp:17", "res2:1", "blue", [ "v0" ] ],
     [ "res2:2", "led2:A", "blue", [ "v0" ] ],
-    [ "esp:GND.2", "led2:C", "black", [ "v0", "h-124.8", "v-96" ] ]
+    [ "esp:GND.2", "led2:C", "black", [ "v0", "h-124.8", "v-96" ] ],
+    [ "esp:21", "oled1:SDA", "green", [ "h0" ] ],
+    [ "esp:22", "oled1:SCL", "cyan", [ "h0" ] ],
+    [ "esp:3V3", "oled1:VCC", "red", [ "h0" ] ],
+    [ "esp:GND.2", "oled1:GND", "black", [ "h0" ] ]
   ],
   "dependencies": {}
 }
